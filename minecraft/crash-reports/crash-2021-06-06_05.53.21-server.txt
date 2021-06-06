@@ -1,0 +1,210 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 6/6/21 5:53 AM
+Description: Watching Server
+
+java.lang.Error: Watchdog
+	at baf.o(SourceFile:178)
+	at aqn.<init>(SourceFile:140)
+	at aqu.<init>(SourceFile:12)
+	at bay.<init>(SourceFile:14)
+	at baf.<init>(SourceFile:86)
+	at aqe$$Lambda$879/1726361113.create(Unknown Source)
+	at aqe.a(SourceFile:463)
+	at bsg.a(SourceFile:343)
+	at bsg.a(SourceFile:268)
+	at bsg.a(SourceFile:197)
+	at bsg.a(SourceFile:185)
+	at aae.a(SourceFile:388)
+	at aae$$Lambda$3474/1634845575.accept(Unknown Source)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at aae.p(SourceFile:368)
+	at aae.a(SourceFile:337)
+	at aag.a(SourceFile:353)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:871)
+	at zg.b(SourceFile:312)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:811)
+	at net.minecraft.server.MinecraftServer.w(SourceFile:670)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:257)
+	at net.minecraft.server.MinecraftServer$$Lambda$3239/1771305569.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server Watchdog
+Stacktrace:
+	at baf.o(SourceFile:178)
+	at aqn.<init>(SourceFile:140)
+	at aqu.<init>(SourceFile:12)
+	at bay.<init>(SourceFile:14)
+	at baf.<init>(SourceFile:86)
+	at aqe$$Lambda$879/1726361113.create(Unknown Source)
+	at aqe.a(SourceFile:463)
+	at bsg.a(SourceFile:343)
+	at bsg.a(SourceFile:268)
+	at bsg.a(SourceFile:197)
+	at bsg.a(SourceFile:185)
+	at aae.a(SourceFile:388)
+	at aae$$Lambda$3474/1634845575.accept(Unknown Source)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at aae.p(SourceFile:368)
+	at aae.a(SourceFile:337)
+	at aag.a(SourceFile:353)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:871)
+	at zg.b(SourceFile:312)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:811)
+	at net.minecraft.server.MinecraftServer.w(SourceFile:670)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:257)
+
+-- Thread Dump --
+Details:
+	Threads: "Worker-Main-12" Id=35 TIMED_WAITING on java.util.concurrent.ForkJoinPool@594e09e3
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.ForkJoinPool@594e09e3
+	at java.util.concurrent.ForkJoinPool.awaitWork(ForkJoinPool.java:1824)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1693)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:175)
+
+
+"Netty Epoll Server IO #1" Id=29 RUNNABLE
+	at java.util.zip.Deflater.deflateBytes(Native Method)
+	at java.util.zip.Deflater.deflate(Deflater.java:444)
+	-  locked java.util.zip.ZStreamRef@5789ecba
+	at java.util.zip.Deflater.deflate(Deflater.java:385)
+	at nc.a(SourceFile:36)
+	at nc.encode(SourceFile:9)
+	at io.netty.handler.codec.MessageToByteEncoder.write(MessageToByteEncoder.java:107)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:738)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:730)
+	...
+
+
+"Server Watchdog" Id=28 RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:496)
+	at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:484)
+	at zj.run(SourceFile:49)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Netty Epoll Server IO #0" Id=20 RUNNABLE
+	at io.netty.channel.epoll.Native.epollWait0(Native Method)
+	at io.netty.channel.epoll.Native.epollWait(Native.java:114)
+	at io.netty.channel.epoll.EpollEventLoop.epollWait(EpollEventLoop.java:239)
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:256)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:884)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"ObjectCleanerThread" Id=19 TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@53b66293
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@53b66293
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+	at io.netty.util.internal.ObjectCleaner$1.run(ObjectCleaner.java:54)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+"Server console handler" Id=18 RUNNABLE (in native)
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:284)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	-  locked java.io.BufferedInputStream@16b4e681
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:284)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:326)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)
+	-  locked java.io.InputStreamReader@3f1cf4a5
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	...
+
+
+"DestroyJavaVM" Id=17 RUNNABLE
+
+
+"Server thread" Id=14 RUNNABLE
+	at baf.o(SourceFile:178)
+	at aqn.<init>(SourceFile:140)
+	at aqu.<init>(SourceFile:12)
+	at bay.<init>(SourceFile:14)
+	at baf.<init>(SourceFile:86)
+	at aqe$$Lambda$879/1726361113.create(Unknown Source)
+	at aqe.a(SourceFile:463)
+	at bsg.a(SourceFile:343)
+	...
+
+
+"Snooper Timer" Id=15 WAITING on java.util.TaskQueue@27e833c0
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.util.TaskQueue@27e833c0
+	at java.lang.Object.wait(Object.java:502)
+	at java.util.TimerThread.mainLoop(Timer.java:526)
+	at java.util.TimerThread.run(Timer.java:505)
+
+
+"Timer hack thread" Id=12 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at x$6.run(SourceFile:636)
+
+
+"Worker-Bootstrap-1" Id=11 RUNNABLE
+	at com.mojang.datafixers.functions.PointFreeRule$CompRewrite.rewrite(PointFreeRule.java:190)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:571)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.PointFreeRule$OrElse.rewrite(PointFreeRule.java:567)
+	at com.mojang.datafixers.functions.Comp.lambda$one$4(Comp.java:44)
+	at com.mojang.datafixers.functions.Comp$$Lambda$1235/1891719351.get(Unknown Source)
+	at java.util.Optional.orElseGet(Optional.java:267)
+	...
+
+
+"Signal Dispatcher" Id=4 RUNNABLE
+
+
+"Finalizer" Id=3 WAITING on java.lang.ref.ReferenceQueue$Lock@47aa7f54
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@47aa7f54
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:165)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:216)
+
+
+"Reference Handler" Id=2 WAITING on java.lang.ref.Reference$Lock@769b19ce
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.Reference$Lock@769b19ce
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference.tryHandlePending(Reference.java:191)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)
+
+
+
+Stacktrace:
+	at zj.run(SourceFile:65)
+	at java.lang.Thread.run(Thread.java:748)
+
+-- Performance stats --
+Details:
+	Random tick rate: 3
+	Level stats: ResourceKey[minecraft:dimension / minecraft:overworld]: players: 1, entities: 158 [minecraft:pig:20,minecraft:skeleton:17,minecraft:creeper:15,minecraft:sheep:15,minecraft:zombie:14], block_entities: 25 [minecraft:chest:14,minecraft:mob_spawner:5,minecraft:smoker:2,minecraft:furnace:2,minecraft:blast_furnace:1], block_ticks: 65, fluid_ticks: 0, chunk_source: ServerChunkCache: 2052,
+ResourceKey[minecraft:dimension / minecraft:the_nether]: players: 0, entities: 0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: ServerChunkCache: 0,
+ResourceKey[minecraft:dimension / minecraft:the_end]: players: 0, entities: 0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: ServerChunkCache: 0
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Linux (amd64) version 4.14.232-176.381.amzn2.x86_64
+	Java Version: 1.8.0_282, Red Hat, Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Red Hat, Inc.
+	Memory: 590627552 bytes (563 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	CPUs: 1
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	Player Count: 1 / 20; [aah['OmaewaMo'/145, l='ServerLevel[world]', x=-220.86, y=37.00, z=-211.61]]
+	Data Packs: vanilla
+	Is Modded: Unknown (can't tell)
+	Type: Dedicated Server (map_server.txt)
